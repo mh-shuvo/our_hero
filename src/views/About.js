@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ikbal from '../images/ikbal.jpeg'
 function About() {
 
     return (

@@ -3,6 +3,7 @@ import Home from '../views/Home';
 import App from '../views/App';
 import OurHeros from '../views/Heros';
 import About from '../views/About';
+import HeroDetails from '../views/HeroDetails';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     {
         path: '/heros',
         element: <App><OurHeros/></App>,
+    },
+    {
+        path: '/heros/:slug',
+        element: <App><HeroDetails/></App>,
     },
     {
         path: '*',

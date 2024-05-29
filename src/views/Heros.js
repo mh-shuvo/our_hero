@@ -6,12 +6,14 @@ function OurHeros() {
     const heroData = [
         {
             id: 1,
+            slug:"md-ikbal",
             name: 'MD Ikbal',
             image: ikbal, // Sample image URL
             dod: "24-05-2024"
         },
         {
             id: 2,
+            slug:"luto-nan",
             name: 'Luto Nan',
             image: 'https://via.placeholder.com/150', // Sample image URL
             dod: "24-05-2024"
@@ -33,7 +35,9 @@ function OurHeros() {
                                         <p className="text-sm text-gray-500" title='Date of Death'>DOD: {hero.dod}</p>
                                     </div>
                                     <div className="py-2">
-                                        <button className="bg-indigo-500 text-white mt-1 py-1 px-2 rounded-lg shadow-sm hover:bg-indigo-600 transition duration-300 ease-in-out">Details</button>
+                                        <Link to={`/heros/`+hero.slug}>
+                                            <button className="bg-indigo-500 text-white mt-1 py-1 px-2 rounded-lg shadow-sm hover:bg-indigo-600 transition duration-300 ease-in-out">Details</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
