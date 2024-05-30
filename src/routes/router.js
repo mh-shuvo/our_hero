@@ -4,27 +4,45 @@ import App from '../views/App';
 import OurHeros from '../views/Heros';
 import About from '../views/About';
 import HeroDetails from '../views/HeroDetails';
+import Error from '../views/Error';
+import Login from '../views/auth/Login';
+import Registration from '../views/auth/Registration';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App><Home /></App>,
-    },
-    {
-        path: '/about',
-        element: <App><About/></App>,
-    },
-    {
-        path: '/heros',
-        element: <App><OurHeros/></App>,
-    },
-    {
-        path: '/heros/:id',
-        element: <App><HeroDetails/></App>,
+        element: <App/>,
+        children:[
+            {
+                index:true,
+                Component:Home
+            },
+            {
+                path: '/about',
+                Component: About,
+            },
+            {
+                path: '/heros',
+                Component: OurHeros,
+            },
+            {
+                path: '/heros/:id',
+                Component: HeroDetails,
+            },
+            {
+                path:'/registration',
+                Component: Registration
+            },
+            {
+                path:'/login',
+                Component: Login
+            }
+        ]
     },
     {
         path: '*',
-        element: <>Not Founddd</>
+        element: <Error/>
     }
+    
 ]);
 
 export default router;

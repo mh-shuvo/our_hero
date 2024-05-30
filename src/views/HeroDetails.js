@@ -13,7 +13,7 @@ function HeroDetails(){
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await axios.get(api + "/heroes/single?id=" + id);
+            const response = await axios.get(api + "/heroes/" + id);
             setHero(response.data);
         } catch (error) {
             console.error(error);

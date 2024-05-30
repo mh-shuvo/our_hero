@@ -14,9 +14,20 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const getAuthUser = () => {
+  const authUser = localStorage.getItem("authUser");
+  if(!authUser){
+    return false;
+  }
+
+  const user = JSON.parse(authUser);
+
+  return user;
+};
+const hasUser = getAuthUser();
+
 export default function Navbar(){
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // Change this to true to simulate logged-in state
   return <>
     <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -54,7 +65,7 @@ export default function Navbar(){
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <ProfileDropdown isLoggedIn={isLoggedIn} />
+            <ProfileDropdown loggedInUser={hasUser} />
           </div>
         </nav>
         <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -93,7 +104,7 @@ export default function Navbar(){
                   ))}
                 </div>
                 <div className="py-6">
-                  <ProfileDropdown isLoggedIn={isLoggedIn} />
+                  <ProfileDropdown loggedInUser={hasUser} />
                 </div>
               </div>
             </div>
