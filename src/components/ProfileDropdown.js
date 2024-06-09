@@ -3,15 +3,22 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { BellIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { logout } from '../actions'
+import { useNavigate } from 'react-router-dom'
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function ProfileDropdown({ loggedInUser }) {
-console.log(loggedInUser)
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  
   const handleSignout = ()=>{
     localStorage.removeItem("authUser");
-    window.location.href="/";
+    dispatch(logout())
+    navigate("/")
   }
 
   if (!loggedInUser) {
@@ -73,12 +80,12 @@ console.log(loggedInUser)
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link to={"/upload-hero"}
                   href="#"
                   className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                 >
-                  Settings
-                </a>
+                  Upload Hero
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>

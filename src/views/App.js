@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 function App() {
   return (
     <div className="min-h-screen bg-white overflow-hidden">
+        
         <Navbar />
         <div className='mb-10'></div>
         <Outlet />

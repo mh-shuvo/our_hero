@@ -5,6 +5,7 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import ProfileDropdown from '../components/ProfileDropdown'; // Adjust the path accordingly
 import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux';
 const navigation = [
   { name: 'Home', href: '/',current:true },
   { name: "Hero's", href: '/heros',current:false }
@@ -14,20 +15,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const getAuthUser = () => {
-  const authUser = localStorage.getItem("authUser");
-  if(!authUser){
-    return false;
-  }
-
-  const user = JSON.parse(authUser);
-
-  return user;
-};
-const hasUser = getAuthUser();
 
 export default function Navbar(){
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const hasUser = useSelector(state => state.auth.user);
   return <>
     <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">

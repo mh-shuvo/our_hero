@@ -7,6 +7,7 @@ import HeroDetails from '../views/HeroDetails';
 import Error from '../views/Error';
 import Login from '../views/auth/Login';
 import Registration from '../views/auth/Registration';
+import UploadHero from '../views/UploadHero';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: '/heros/:id',
                 Component: HeroDetails,
+            },
+            {
+                path: '/upload-hero',
+                Component: UploadHero,
             },
             {
                 path:'/registration',

@@ -1,8 +1,16 @@
 import {React,useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"; // Import Axios
+import { authAction } from "../../actions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const api = process.env.REACT_APP_API;
+
 export default function Login(){
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const [data, setData] = useState({
         email: "",
@@ -30,13 +38,14 @@ export default function Login(){
           // Assuming login response contains a token property
           const user = response.data.user;
     
-          // Store token in local storage (replace with preferred storage method)
-          const userString = JSON.stringify(user);
-          localStorage.setItem("authUser", userString);
-    
           // Redirect or perform other actions after successful login
           alert("Login successful!");
-          window.location.href="/";
+          // Save user data to localStorage
+          localStorage.setItem("user", JSON.stringify(user));
+          dispatch(authAction(user)); 
+          navigate("/");
+          
+          // window.location.href="/";
     
         } catch (error) {
           setError(error.response.data.error);
