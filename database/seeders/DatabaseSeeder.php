@@ -34,12 +34,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'contributor',
         ]);
 
-        // Create test user
-        User::factory()->create([
-            'name' => 'Mosharraf',
-            'email' => 'mdmhriyad6472@gmail.com',
-            'password' => bcrypt('password'),
-            'role' => 'contributor',
-        ]);
+        
     }
 }
