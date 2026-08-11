@@ -144,7 +144,7 @@
     <!-- Footer -->
     <footer class="py-8 px-4 bg-white/50 backdrop-blur-sm mt-20">
         <div class="max-w-6xl mx-auto text-center text-gray-600">
-            <p>&copy; {{ date('Y') }} Poricito. Preserving memories with love.</p>
+            <p>&copy; {{ date('Y') }} Poricito. Preserving memories with love. Developed by <a href="https://mh-shuvo.github.io/mh-shuvo/">Mohammad Mehedi Hasan</a></p>
         </div>
     </footer>
 </body>
